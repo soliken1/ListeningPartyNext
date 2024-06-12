@@ -12,7 +12,7 @@ function Register() {
           <Label text="Already A Member?" classes="text-gray-300" />
           <Label text="Login Here!" classes="text-blue-500" />
         </div>
-        <Form buttonType="Sign Up" />
+        <Form buttonType="Sign Up" formType="Sign Up" />
       </div>
     </main>
   );

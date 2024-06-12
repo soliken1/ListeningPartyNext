@@ -1,10 +1,10 @@
-function Button({ classes, onClick, text, image, imgclass }) {
+const Button = ({ text, classes, image, imgclass, onClick, type }) => {
   return (
-    <button className={classes} onClick={onClick}>
-      {image && <img src={image} className={imgclass} alt={text} />}
+    <button type={type} className={classes} onClick={onClick}>
+      {image && <img src={image} className={imgclass} alt={`${text} icon`} />}
       {text}
     </button>
   );
-}
+};
 
 export default Button;

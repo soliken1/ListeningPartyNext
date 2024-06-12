@@ -2,7 +2,7 @@ import React from "react";
 
 const Label = ({ text, classes, forTag }) => {
   return (
-    <label for={forTag} className={classes}>
+    <label htmlFor={forTag} className={classes}>
       {text}
     </label>
   );
