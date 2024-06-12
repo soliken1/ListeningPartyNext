@@ -8,15 +8,10 @@ export default function Home() {
     <main className="flex flex-col md:flex-row h-screen">
       <div className="flex justify-center items-center w-full md:w-6/12 p-5 mt-12">
         <div className="flex flex-col justify-center gap-5 flex-nowrap -translate-y-12">
-          <Header
-            text={"Listening Party"}
-            size={"text-7xl"}
-            color={"text-white"}
-          />
+          <Header text={"Listening Party"} classes={"text-7xl text-white"} />
           <Label
             text={"Listen in to users what they are Listening in a Room!"}
-            size={"text-xl"}
-            color={"text-white"}
+            classes={"text-white text-xl"}
           />
           <div className="flex justify-center items-center mt-4">
             <ClientButton />
@@ -24,10 +19,9 @@ export default function Home() {
         </div>
       </div>
       <Image
-        position={
-          "absolute bottom-0 right-0 w-4/12 h-4/6 -z-10 opacity-25 object-scale-down"
+        classes={
+          "absolute bottom-0 right-0 w-4/12 h-4/6 -z-10 opacity-25 object-scale-down text-white"
         }
-        color={"text-white"}
         image={"/Listening.png"}
         alt_text={"Listening"}
       />

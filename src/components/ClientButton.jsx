@@ -13,12 +13,7 @@ export default function ClientButton() {
   return (
     <Button
       text={"Listen Now!"}
-      color={"text-white"}
-      bg_color={"bg-green-400"}
-      padding={"pt-2 pb-2"}
-      width={"w-64"}
-      rounded={"rounded-lg"}
-      shadow={"shadow-2xl"}
+      classes="text-white bg-green-400 pt-2 pb-2 w-64 rounded-lg shadow-2xl"
       onClick={handleClick}
     />
   );

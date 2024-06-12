@@ -1,8 +1,11 @@
 import React from "react";
 
-const Label = ({ text, color, size }) => {
-  const concatClasses = `${size} ${color}`;
-  return <label className={concatClasses}>{text}</label>;
+const Label = ({ text, classes, forTag }) => {
+  return (
+    <label for={forTag} className={classes}>
+      {text}
+    </label>
+  );
 };
 
 export default Label;

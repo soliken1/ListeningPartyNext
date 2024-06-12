@@ -1,16 +1,7 @@
-function Button({
-  text,
-  width,
-  color,
-  bg_color,
-  padding,
-  rounded,
-  shadow,
-  onClick,
-}) {
-  const concatClasses = `${width} ${color} ${bg_color} ${padding} ${rounded} ${shadow}`;
+function Button({ classes, onClick, text, image, imgclass }) {
   return (
-    <button className={concatClasses} onClick={onClick}>
+    <button className={classes} onClick={onClick}>
+      {image && <img src={image} className={imgclass} alt={text} />}
       {text}
     </button>
   );
