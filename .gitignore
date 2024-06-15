@@ -42,5 +42,3 @@ firebase.json
 firestore.indexes.json
 firestore.rules
 storage.rules
-firebaseConfig.js
-youtube.js
