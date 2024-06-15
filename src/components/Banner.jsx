@@ -17,6 +17,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "../configs/firebaseConfig";
 import { useRouter } from "next/navigation";
 import { destroyCookie } from "nookies";
+import Link from "next/link";
 
 const navigation = [
   { name: "Home", href: "/", current: false },
@@ -60,7 +61,7 @@ function Banner() {
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <a
+                      <Link
                         key={item.name}
                         href={item.href}
                         className={classNames(
@@ -72,20 +73,14 @@ function Banner() {
                         aria-current={item.current ? "page" : undefined}
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-shrink-0 items-center justify-center w-1/4">
-                  <Inputbox
-                    type="text"
-                    classes="h-8 w-full rounded ps-2 text-sm text-center"
-                  />
-                </div>
               </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <div className="absolute inset-y-0 right-0 flex items-center pr-5 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <Username />
-                <Menu as="div" className="relative ml-3">
+                <Menu as="div" className="relative ml-5">
                   <div>
                     <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="absolute -inset-1.5" />

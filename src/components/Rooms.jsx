@@ -1,21 +1,14 @@
 import React from "react";
-import he from "he";
 import Link from "next/link";
-
-const VideoTitle = ({ title }) => {
-  const decodedTitle = title ? he.decode(title) : "";
-
-  return <h1>{decodedTitle}</h1>;
-};
+import TextFormatter from "../utils/TextFormatter";
 
 const Rooms = ({ data, current }) => {
-  console.log(current);
   const isIdNull = data?.id || "";
   return (
     <Link
       key={data.id}
       href={`/rooms/${isIdNull}`}
-      className="max-w-lg mx-auto rounded-xl bg-gray-950 hover:shadow-green-900 overflow-hidden hover:shadow-lg hover:cursor-pointer ease-linear duration-200 md:h-auto md:w-96"
+      className="[&_*]:hover:cursor-pointer max-w-lg mx-auto rounded-xl bg-gray-950 hover:shadow-indigo-900 overflow-hidden hover:shadow-lg ease-linear duration-200 md:h-auto md:w-96"
     >
       <div className="md:flex md:flex-col md:h-full">
         <div className="md:shrink-0 md:w-full w-full h-52 md:h-40">
@@ -32,7 +25,7 @@ const Rooms = ({ data, current }) => {
           </label>
           <label className="mt-1 text-white">{data.room_desc}</label>
           <label className="block mt-1 text-lg leading-tight font-medium text-white">
-            <VideoTitle title={current?.selectedVideo.snippet.title} />
+            <TextFormatter title={current?.selectedVideo.snippet.title} />
           </label>
           <label className="mt-2 text-slate-500">
             {current?.selectedVideo.snippet.description}

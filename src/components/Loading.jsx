@@ -11,5 +11,3 @@ const Loading = () => {
 };
 
 export default Loading;
-
-// Default values shown
