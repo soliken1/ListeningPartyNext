@@ -4,10 +4,10 @@ import RoomContent from "@/src/components/RoomContent";
 function Rooms() {
   return (
     <div>
-      <Banner />
+      {/* <Banner /> */}
       <div className="mt-5">
         <RelevantContent />
-        <RoomContent />
+        {/* <RoomContent /> */}
       </div>
     </div>
   );
