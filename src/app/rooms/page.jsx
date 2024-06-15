@@ -1,15 +1,15 @@
 "use client";
-import Banner from "@/src/components/Banner";
-import RelevantContent from "@/src/components/RelevantContent";
-import RoomContent from "@/src/components/RoomContent";
+// import Banner from "@/src/components/Banner";
+// import RelevantContent from "@/src/components/RelevantContent";
+// import RoomContent from "@/src/components/RoomContent";
 function Rooms() {
   return (
     <div>
-      <Banner />
+      {/* <Banner />
       <div className="mt-5">
         <RelevantContent />
         <RoomContent />
-      </div>
+      </div> */}
     </div>
   );
 }
