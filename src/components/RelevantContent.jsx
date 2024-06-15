@@ -1,3 +1,4 @@
+"use client";
 const RelevantContent = () => {
   return (
     <div className="max-w-md mx-auto bg-gray-950 rounded-xl shadow-md shadow-gray-900 overflow-hidden md:max-w-3xl md:h-72">
