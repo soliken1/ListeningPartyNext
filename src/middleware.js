@@ -3,11 +3,11 @@ import { NextResponse } from "next/server";
 export function middleware(request) {
   const currentUser = request.cookies.get("currentUser")?.value;
 
-  if (currentUser && request.nextUrl.pathname.startsWith("/login")) {
-    return NextResponse.redirect(new URL("/dashboard", request.url));
+  if (currentUser && request.nextUrl.pathname === "/login") {
+    return NextResponse.redirect(new URL("/rooms", request.url));
   }
 
-  if (!currentUser && request.nextUrl.pathname.startsWith("/dashboard")) {
+  if (!currentUser && request.nextUrl.pathname.startsWith("/rooms")) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
@@ -15,5 +15,5 @@ export function middleware(request) {
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/login/:path*"],
+  matcher: ["/rooms/:path*", "/login"],
 };

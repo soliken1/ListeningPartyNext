@@ -10,6 +10,7 @@ import { auth, googleProvider } from "../configs/firebaseConfig";
 import { signInWithPopup } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { setCookie } from "nookies";
 
 const Form = ({ buttonType, formType }) => {
   const [email, setEmail] = useState("");
@@ -26,7 +27,7 @@ const Form = ({ buttonType, formType }) => {
     useSignInWithEmailAndPassword(auth);
 
   const setServerCookie = async (user) => {
-    await fetch("/api/setCookie", {
+    await fetch("/pages/api/setCookie", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -61,7 +62,7 @@ const Form = ({ buttonType, formType }) => {
         maxAge: 30 * 24 * 60 * 60,
         path: "/",
       });
-      router.push("/dashboard");
+      router.push("/rooms");
     } catch (error) {
       console.error("Error during Google login:", error);
     }

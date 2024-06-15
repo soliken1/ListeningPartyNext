@@ -16,6 +16,7 @@ import Username from "./Username";
 import { signOut } from "firebase/auth";
 import { auth } from "../configs/firebaseConfig";
 import { useRouter } from "next/navigation";
+import { destroyCookie } from "nookies";
 
 const navigation = [
   { name: "Home", href: "/", current: false },
