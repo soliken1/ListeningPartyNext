@@ -1,3 +1,4 @@
+"use client";
 import Banner from "@/src/components/Banner";
 import RelevantContent from "@/src/components/RelevantContent";
 import RoomContent from "@/src/components/RoomContent";
