@@ -8,11 +8,13 @@ import {
 } from "react-firebase-hooks/auth";
 import { auth, googleProvider } from "../configs/firebaseConfig";
 import { signInWithPopup } from "firebase/auth";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const Form = ({ buttonType, formType }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
   const [
     createUserWithEmailAndPassword,
@@ -23,20 +25,43 @@ const Form = ({ buttonType, formType }) => {
   const [signInWithEmailAndPassword, userSignIn, loadingSignIn, errorSignIn] =
     useSignInWithEmailAndPassword(auth);
 
+  const setServerCookie = async (user) => {
+    await fetch("/api/setCookie", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ uid: user.uid, email: user.email }),
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(email);
     console.log(password);
-    if (formType === "Sign In") {
-      await signInWithEmailAndPassword(email, password);
-    } else {
-      await createUserWithEmailAndPassword(email, password);
+    try {
+      let userCredential;
+      if (formType === "Sign In") {
+        userCredential = await signInWithEmailAndPassword(email, password);
+      } else {
+        userCredential = await createUserWithEmailAndPassword(email, password);
+      }
+      await setServerCookie(userCredential.user);
+      router.push("/rooms");
+    } catch (error) {
+      console.error("Error during authentication:", error);
     }
   };
 
   const handleGoogleLogin = async () => {
     try {
-      await signInWithPopup(auth, googleProvider);
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      setCookie(null, "currentUser", user.uid, {
+        maxAge: 30 * 24 * 60 * 60,
+        path: "/",
+      });
+      router.push("/dashboard");
     } catch (error) {
       console.error("Error during Google login:", error);
     }

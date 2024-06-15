@@ -1,5 +1,6 @@
+import Banner from "@/src/components/Banner";
 function Room({ params }) {
-  return <h1>Room {params.roomId}</h1>;
+  return <Banner />;
 }
 
 export default Room;

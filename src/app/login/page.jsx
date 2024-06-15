@@ -1,5 +1,7 @@
 import Form from "@/src/components/Form";
 import Label from "@/src/components/Label";
+import Anchor from "@/src/components/Anchor";
+import Link from "next/link";
 
 function Login() {
   return (
@@ -11,7 +13,9 @@ function Login() {
         />
         <div className="flex flex-row flex-nowrap gap-1">
           <Label text="Not A Member?" classes="text-gray-300" />
-          <Label text="Register Here!" classes="text-blue-500" />
+          <Link href="/register" className="text-blue-500">
+            Register Here
+          </Link>
         </div>
         <Form buttonType="Sign In" formType="Sign In" />
       </div>

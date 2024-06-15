@@ -1,5 +1,6 @@
 import Form from "@/src/components/Form";
 import Label from "@/src/components/Label";
+import Link from "next/link";
 function Register() {
   return (
     <main className="flex justify-center items-center h-screen">
@@ -10,7 +11,9 @@ function Register() {
         />
         <div className="flex flex-row flex-nowrap gap-1">
           <Label text="Already A Member?" classes="text-gray-300" />
-          <Label text="Login Here!" classes="text-blue-500" />
+          <Link href="/login" className="text-blue-500">
+            Login Here
+          </Link>
         </div>
         <Form buttonType="Sign Up" formType="Sign Up" />
       </div>
