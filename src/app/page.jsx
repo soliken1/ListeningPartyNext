@@ -1,3 +1,4 @@
+"use client";
 import Header from "../components/Header.jsx";
 import ClientButton from "../components/ClientButton.jsx";
 import Label from "../components/Label.jsx";

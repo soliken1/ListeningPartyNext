@@ -1,6 +1,6 @@
+"use client";
 import Form from "@/src/components/Form";
 import Label from "@/src/components/Label";
-import Anchor from "@/src/components/Anchor";
 import Link from "next/link";
 
 function Login() {

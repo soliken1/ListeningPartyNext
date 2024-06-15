@@ -1,3 +1,4 @@
+"use client";
 import Form from "@/src/components/Form";
 import Label from "@/src/components/Label";
 import Link from "next/link";
