@@ -6,8 +6,8 @@ function Rooms() {
     <div>
       {/* <Banner /> */}
       <div className="mt-5">
-        {/* <RelevantContent /> */}
-        <RoomContent />
+        <RelevantContent />
+        {/* <RoomContent /> */}
       </div>
     </div>
   );
