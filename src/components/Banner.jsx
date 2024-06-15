@@ -10,7 +10,6 @@ import {
   Transition,
 } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import Inputbox from "./Inputbox";
 import Pfp from "./Pfp";
 import Username from "./Username";
 import { signOut } from "firebase/auth";

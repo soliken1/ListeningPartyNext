@@ -13,7 +13,12 @@ const Pfp = () => {
       }
     });
   });
-  return <img src={ProfPic} className="w-10 h-10 rounded-full" />;
+  return (
+    <img
+      src={ProfPic ? ProfPic : "/1.jpg"}
+      className="w-10 h-10 rounded-full"
+    />
+  );
 };
 
 export default Pfp;

@@ -11,7 +11,7 @@ const Username = () => {
     return () => unsubscribe;
   }, []);
 
-  return <label className="text-white">{userName}</label>;
+  return <label className="text-white">{userName ? userName : ""}</label>;
 };
 
 export default Username;
