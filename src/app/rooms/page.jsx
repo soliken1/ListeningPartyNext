@@ -7,7 +7,7 @@ function Rooms() {
       {/* <Banner /> */}
       <div className="mt-5">
         <RelevantContent />
-        {/* <RoomContent /> */}
+        <RoomContent />
       </div>
     </div>
   );
