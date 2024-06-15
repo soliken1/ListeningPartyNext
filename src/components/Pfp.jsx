@@ -7,7 +7,6 @@ const Pfp = () => {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
-        console.log(user);
         setProfPic(user.photoURL);
       } else {
         setProfPic(null);
