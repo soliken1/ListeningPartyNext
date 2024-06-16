@@ -1,7 +1,11 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import TextFormatter from "../utils/TextFormatter";
+import dynamic from "next/dynamic";
+
+const TextFormatter = dynamic(() => import("../utils/TextFormatter"), {
+  ssr: false,
+});
 
 const Rooms = ({ data, current }) => {
   const checkDataIsNull = data || null;

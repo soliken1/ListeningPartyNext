@@ -1,7 +1,13 @@
 "use client";
-import Banner from "@/src/components/Banner";
 import RelevantContent from "@/src/components/RelevantContent";
 import RoomContent from "@/src/components/RoomContent";
+import dynamic from "next/dynamic";
+
+const RoomContent = dynamic(() => import("@/src/components/RoomContent"), {
+  ssr: false,
+});
+const Banner = dynamic(() => import("@/src/components/Banner"), { ssr: false });
+
 function Rooms() {
   return (
     <div>
