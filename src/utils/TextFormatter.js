@@ -1,3 +1,4 @@
+"use client";
 import he from "he";
 function VideoTitle({ title }) {
   const decodedTitle = title ? he.decode(title) : "";
