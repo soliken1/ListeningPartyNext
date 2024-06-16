@@ -11,7 +11,7 @@ const Rooms = ({ data, current }) => {
     <Link
       key={checkDataIsNull?.id || ""}
       href={`/rooms/${isIdNull}`}
-      className="[&_*]:hover:cursor-pointer max-w-lg mx-auto rounded-xl bg-gray-950 hover:shadow-indigo-900 overflow-hidden hover:shadow-lg ease-linear duration-200 md:h-auto md:w-96"
+      className="cursor-pointer max-w-lg mx-auto rounded-xl bg-gray-950 hover:shadow-indigo-900 overflow-hidden hover:shadow-lg ease-linear duration-200 md:h-auto md:w-96"
     >
       <div className="md:flex md:flex-col md:h-full">
         <div className="md:shrink-0 md:w-full w-full h-52 md:h-40">
