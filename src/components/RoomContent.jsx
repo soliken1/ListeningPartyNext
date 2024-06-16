@@ -1,13 +1,9 @@
 "use client";
+
+import React, { useState, useEffect } from "react";
 import Rooms from "./Rooms";
 import { db } from "../configs/firebaseConfig";
-import {
-  collection,
-  serverTimestamp,
-  addDoc,
-  getDocs,
-} from "@firebase/firestore";
-import { useState, useEffect } from "react";
+import { collection, getDocs } from "@firebase/firestore";
 import Loading from "./Loading";
 
 const RoomContent = () => {
@@ -50,28 +46,24 @@ const RoomContent = () => {
         setIsCurrPlayLoading(false);
       } catch (error) {
         console.error("Error getting current playing: ", error);
-        setIsRoomListLoading(false);
+        setIsCurrPlayLoading(false);
       }
     };
     getCurrentPlay();
   }, []);
+
   if (isCurrPlayLoading || isRoomListLoading) {
     return <Loading />;
   }
+
   return (
     <div className="relative flex flex-1 flex-col flex-wrap gap-10 justify-evenly md:flex-row mt-5 p-5">
-      {roomList && currentPlay ? (
+      {roomList && currentPlay.length > 0 ? (
         roomList.map((room) => {
           const currentVideo = currentPlay.find(
             (video) => video.id === room.id
           );
-          return (
-            <Rooms
-              key={room.id || 0}
-              data={room || null}
-              current={currentVideo || null}
-            />
-          );
+          return <Rooms key={room.id} data={room} current={currentVideo} />;
         })
       ) : (
         <div>No rooms available</div>

@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import TextFormatter from "../utils/TextFormatter";
@@ -17,6 +19,7 @@ const Rooms = ({ data, current }) => {
             src={
               current?.selectedVideo?.snippet?.thumbnails?.high?.url || "/1.jpg"
             }
+            alt={data.room_name || "Room image"}
           />
         </div>
         <div className="p-8 flex flex-col justify-center gap-2">
