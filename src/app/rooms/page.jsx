@@ -1,6 +1,5 @@
 "use client";
 import RelevantContent from "@/src/components/RelevantContent";
-import RoomContent from "@/src/components/RoomContent";
 import dynamic from "next/dynamic";
 
 const RoomContent = dynamic(() => import("@/src/components/RoomContent"), {
