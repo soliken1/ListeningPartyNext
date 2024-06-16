@@ -1,10 +1,12 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Rooms from "./Rooms";
 import { db } from "../configs/firebaseConfig";
 import { collection, getDocs } from "@firebase/firestore";
 import Loading from "./Loading";
+import dynamic from "next/dynamic";
+
+const Rooms = dynamic(() => import("../components/Rooms"), { ssr: false });
 
 const RoomContent = () => {
   const [roomList, setRoomList] = useState([]);
