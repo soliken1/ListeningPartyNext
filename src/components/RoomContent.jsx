@@ -65,7 +65,13 @@ const RoomContent = () => {
           const currentVideo = currentPlay.find(
             (video) => video.id === room.id
           );
-          return <Rooms key={room.id} data={room} current={currentVideo} />;
+          return (
+            <Rooms
+              key={room.id || 0}
+              data={room || null}
+              current={currentVideo || null}
+            />
+          );
         })
       ) : (
         <div>No rooms available</div>
