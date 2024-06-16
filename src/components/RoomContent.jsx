@@ -58,16 +58,22 @@ const RoomContent = () => {
 
   return (
     <div className="relative flex flex-1 flex-col flex-wrap gap-10 justify-evenly md:flex-row mt-5 p-5">
-      {roomList && currentPlay.length > 0 ? (
+      {/* {roomList && currentPlay.length > 0 ? (
         roomList.map((room) => {
           const currentVideo = currentPlay.find(
             (video) => video.id === room.id
           );
-          return <Rooms key={room.id} data={room} current={currentVideo} />;
+          return (
+            <Rooms
+              key={room.id || null}
+              data={room || null}
+              current={currentVideo || null}
+            />
+          );
         })
       ) : (
         <div>No rooms available</div>
-      )}
+      )} */}
     </div>
   );
 };
