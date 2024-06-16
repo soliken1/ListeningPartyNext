@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { auth } from "../configs/firebaseConfig";
 
-const Pfp = () => {
+const Pfp = ({ fallbackPic }) => {
   const [ProfPic, setProfPic] = useState(null);
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -15,7 +15,7 @@ const Pfp = () => {
   });
   return (
     <img
-      src={ProfPic ? ProfPic : "/1.jpg"}
+      src={ProfPic || fallbackPic}
       className="w-10 h-10 object-cover rounded-full"
     />
   );

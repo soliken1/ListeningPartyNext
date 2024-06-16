@@ -78,13 +78,13 @@ function Banner() {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-5 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <Username />
+                <Username fallbackLabel="..." />
                 <Menu as="div" className="relative ml-5">
                   <div>
                     <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
-                      <Pfp />
+                      <Pfp fallbackPic="/1.jpg" />
                     </MenuButton>
                   </div>
                   <Transition

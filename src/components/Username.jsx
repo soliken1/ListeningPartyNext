@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { auth } from "../configs/firebaseConfig";
 
-const Username = () => {
+const Username = ({ fallbackLabel }) => {
   const [userName, setUsername] = useState(null);
 
   useEffect(() => {
@@ -12,7 +12,7 @@ const Username = () => {
     return () => unsubscribe();
   }, []);
 
-  return <label className="text-white">{userName}</label>;
+  return <label className="text-white">{userName || fallbackLabel}</label>;
 };
 
 export default Username;
