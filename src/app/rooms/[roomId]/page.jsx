@@ -243,17 +243,17 @@ const Room = ({ params }) => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 md:w-3/6 me-5">
+        <div className="flex flex-col gap-2 md:w-3/6 me-5 pb-3">
           {searchResults.map((video) => (
             <div
               key={video.id.videoId}
-              className="md:h-32 rounded-xl flex flex-row gap-4 [&_*]:hover:cursor-pointer"
+              className="w-full h-full md:h-32 rounded-xl flex flex-col md:flex-row gap-4 [&_*]:hover:cursor-pointer"
               onClick={() => handleVideoSelect(video)}
             >
               <img
                 src={video.snippet.thumbnails.high.url}
                 alt={video.snippet.title}
-                className="md:w-6/12 object-cover rounded-xl mt-1"
+                className="h-64 md:w-6/12 object-cover rounded-xl mt-1"
               />
               <div className="flex flex-col">
                 <label className="text-sm text-white">
