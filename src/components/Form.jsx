@@ -118,9 +118,9 @@ const Form = ({ buttonType, formType }) => {
         {errorSignIn && <p className="text-red-500">{errorSignIn.message}</p>}
       </form>
       <div className="flex items-center justify-between flex-row flex-nowrap mt-5">
-        <div className="border-solid border-white border-t-2 w-36"></div>
-        <Label text="Or Continue With" classes="text-white" />
-        <div className="border-solid border-white border-t-2 w-36"></div>
+        <div className="border-solid border-white border-t-2 w-20 md:w-32"></div>
+        <Label text="Or" classes="text-white w-32 text-center" />
+        <div className="border-solid border-white border-t-2 w-20 md:w-32"></div>
       </div>
       <div className="flex justify-evenly flex-row flex-nowrap gap-3">
         <Button
