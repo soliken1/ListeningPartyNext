@@ -12,7 +12,11 @@ const Username = ({ fallbackLabel }) => {
     return () => unsubscribe();
   }, []);
 
-  return <label className="text-white">{userName || fallbackLabel}</label>;
+  return (
+    <label className="text-white hidden md:block">
+      {userName || fallbackLabel}
+    </label>
+  );
 };
 
 export default Username;

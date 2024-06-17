@@ -20,7 +20,7 @@ import Link from "next/link";
 
 const navigation = [
   { name: "Home", href: "/", current: false },
-  { name: "Rooms", href: "/rooms", current: true },
+  { name: "Rooms", href: "/rooms", current: false },
 ];
 
 function classNames(...classes) {
@@ -66,7 +66,7 @@ function Banner() {
                         className={classNames(
                           item.current
                             ? "bg-gray-900 text-white"
-                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                            : "text-gray-300 hover:bg-gray-700 hover:text-white ease-linear duration-200",
                           "rounded-md px-3 py-2 text-sm font-medium"
                         )}
                         aria-current={item.current ? "page" : undefined}

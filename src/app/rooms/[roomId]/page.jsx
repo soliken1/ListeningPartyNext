@@ -148,7 +148,7 @@ const Room = ({ params }) => {
     <div>
       <Banner />
       <div className="w-screen h-screen md:p-0">
-        <div className="absolute z-10 top-1 left-1/2 transform -translate-x-1/2 translate-y-3 flex flex-shrink-0 items-center justify-center w-1/4">
+        <div className="absolute z-10 top-1 left-1/2 transform -translate-x-1/2 translate-y-3 flex flex-shrink-0 items-center justify-center w-2/4">
           <form className="w-full" onSubmit={handleSearch}>
             <Inputbox
               type="text"
@@ -249,7 +249,7 @@ const Room = ({ params }) => {
             {searchResults.map((video) => (
               <div
                 key={video.id.videoId}
-                className="w-full h-full md:h-32 rounded-xl flex flex-col md:flex-row gap-5 [&_*]:hover:cursor-pointer"
+                className="w-full h-full md:h-32 rounded-xl flex flex-col md:flex-row gap-5 [&_*]:hover:cursor-pointer ease-linear duration-200 hover:bg-gray-950"
                 onClick={() => handleVideoSelect(video)}
               >
                 <img
@@ -257,7 +257,7 @@ const Room = ({ params }) => {
                   alt={video.snippet.title}
                   className="h-full md:w-6/8 object-cover rounded-xl"
                 />
-                <div className="flex flex-col">
+                <div className="flex flex-col p-5">
                   <label className="text-sm text-white">
                     <TextFormatter title={video.snippet.title} />
                   </label>
