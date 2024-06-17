@@ -62,7 +62,7 @@ const RoomContent = () => {
   }
 
   return (
-    <div className="relative flex flex-1 flex-col flex-wrap gap-10 justify-evenly md:flex-row mt-5 p-5">
+    <div className="[&_*]:hover:cursor-pointer relative flex flex-1 flex-col flex-wrap gap-10 justify-evenly md:flex-row mt-5 p-5">
       {roomList && currentPlay.length > 0 ? (
         roomList.map((room) => {
           const currentVideo = currentPlay.find(

@@ -14,7 +14,7 @@ body {
 
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  width: 12px;
+  width: 6px;
   background-color: var(--primary);
 }
 
