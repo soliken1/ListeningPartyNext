@@ -16,7 +16,13 @@ import TextFormatter from "@/src/utils/TextFormatter";
 import Banner from "@/src/components/Banner";
 import Inputbox from "@/src/components/Inputbox";
 import youtubeAPI from "@/src/utils/youtube";
-import ReactPlayer from "react-player";
+import Searchbar from "@/src/components/Searchbar";
+import EmbedPlayer from "@/src/components/EmbedPlayer";
+import QueuedList from "@/src/components/QueuedList";
+import SelectedDescription from "@/src/components/SelectedDescription";
+import Messages from "@/src/components/Messages";
+import MessageBox from "@/src/components/MessageBox";
+import SearchResult from "@/src/components/SearchResult";
 
 const Room = ({ params }) => {
   const [selectedVideo, setSelectedVideo] = useState(null);
@@ -122,105 +128,34 @@ const Room = ({ params }) => {
     <div>
       <Banner />
       <div className="w-screen h-screen md:p-0">
-        <div className="absolute z-10 top-1 left-1/2 transform -translate-x-1/2 translate-y-3 flex flex-shrink-0 items-center justify-center w-2/4">
-          <form className="w-full" onSubmit={handleSearch}>
-            <Inputbox
-              type="text"
-              classes="h-8 w-full rounded ps-2 text-sm"
-              value={searchQuery}
-              pholder="Search Videos Here..."
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          </form>
-        </div>
+        <Searchbar
+          handleSearch={handleSearch}
+          searchQuery={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
 
         <div className="w-full h-full flex justify-center items-center p-5 mt-5 md:mt-0">
           <div className="flex flex-row flex-wrap gap-5 justify-between items-center md:w-full md:h-full md:flex-nowrap">
-            <div className="flex flex-col h-96 w-full p-1 bg-black rounded-xl md:h-full md:w-full">
-              <ReactPlayer
-                style={{ backgroundColor: "transparent" }}
-                width="100%"
-                height="100%"
-                url={`https://www.youtube.com/embed/${playingVideo}?autoplay=1`}
-                playing
-                controls
-              ></ReactPlayer>
-            </div>
+            <EmbedPlayer playingVideo={playingVideo} />
 
-            <div className="flex flex-col gap-2 h-96 w-full md:h-full md:w-2/6 p-5 rounded-xl bg-gray-950">
-              <div className="flex justify-center items-center">
-                <h2 className="text-lg font-medium text-white">
-                  Queued Videos
-                </h2>
-              </div>
-            </div>
+            <QueuedList />
           </div>
         </div>
 
         <div className="flex flex-1 flex-wrap flex-row justify-center md:mt-0 gap-10 md:w-full ps-5 pe-5 md:h-full md:flex-nowrap p-5">
           <div className="flex flex-col gap-5 md:h-full justify-between w-full md:w-full rounded-xl p-5 bg-gray-950">
-            <div className="flex flex-col gap-2">
-              <label className="mt-1 text-xl leading-tight font-medium text-white">
-                <TextFormatter title={selectedVideo?.snippet?.title} />
-              </label>
-              <label className="mt-1 text-sm text-zinc-500">
-                <TextFormatter title={selectedVideo?.snippet?.channelTitle} />
-              </label>
-              <label className="text-sm text-zinc-500">
-                <TextFormatter title={selectedVideo?.snippet?.description} />
-              </label>
-              <label className="text-sm text-zinc-500">
-                Official Youtube Link{" "}
-                <a
-                  className="text-indigo-500"
-                  href={`https://www.youtube.com/watch?v=${playingVideo}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Click Here
-                </a>
-              </label>
-            </div>
+            <SelectedDescription
+              selectedVideo={selectedVideo}
+              playingVideo={playingVideo}
+            />
 
-            <div className="flex flex-col overflow-auto gap-5">
-              {session
-                .filter((session) => session.sender_created !== null)
-                .sort(
-                  (a, b) => a.sender_created.seconds - b.sender_created.seconds
-                )
-                .map((session) => (
-                  <div key={session.id} className="flex flex-row gap-2">
-                    <label className="text-zinc-500 text-xs">
-                      {session.sender_created
-                        ? new Date(
-                            session.sender_created.seconds * 1000
-                          ).toLocaleTimeString([], {
-                            hour: "2-digit",
-                            minute: "2-digit",
-                          })
-                        : ""}
-                    </label>
-                    <label className="text-indigo-400 text-xs">
-                      {session.sender_user + ": "}
-                    </label>
-                    <label className="text-white text-xs w-48 md:w-10/12">
-                      {session.sender_message}
-                    </label>
-                  </div>
-                ))}
-            </div>
+            <Messages session={session} />
 
-            <div>
-              <form onSubmit={onSubmitMessage}>
-                <Inputbox
-                  type="text"
-                  classes="rounded-lg h-8 ps-3 text-xs w-10/12"
-                  value={message}
-                  pholder="Start Messaging Here..."
-                  onChange={(e) => setMessage(e.target.value)}
-                />
-              </form>
-            </div>
+            <MessageBox
+              onSubmitMessage={onSubmitMessage}
+              message={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
           </div>
 
           <div className="flex flex-col gap-2 md:w-3/6 me-5 rounded-xl p-3 bg-gray-950">
@@ -229,27 +164,10 @@ const Room = ({ params }) => {
                 Video Results
               </label>
             </div>
-            {searchResults.map((video) => (
-              <div
-                key={video.id.videoId}
-                className="w-full h-full md:h-32 rounded-xl flex flex-col md:flex-row gap-5 [&_*]:hover:cursor-pointer ease-linear duration-200 hover:bg-gray-900"
-                onClick={() => handleVideoSelect(video)}
-              >
-                <img
-                  src={video.snippet.thumbnails.high.url}
-                  alt={video.snippet.title}
-                  className="h-full md:w-6/8 object-cover rounded-xl"
-                />
-                <div className="flex flex-col p-5">
-                  <label className="text-sm text-white">
-                    <TextFormatter title={video.snippet.title} />
-                  </label>
-                  <label className="text-xs text-gray-300">
-                    <TextFormatter title={video.snippet.channelTitle} />
-                  </label>
-                </div>
-              </div>
-            ))}
+            <SearchResult
+              searchResults={searchResults}
+              handleVideoSelect={handleVideoSelect}
+            />
           </div>
         </div>
       </div>
