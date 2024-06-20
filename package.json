@@ -22,7 +22,8 @@
     "nookies": "^2.5.2",
     "react": "^18",
     "react-dom": "^18",
-    "react-firebase-hooks": "^5.1.1"
+    "react-firebase-hooks": "^5.1.1",
+    "react-player": "^2.16.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.19",
